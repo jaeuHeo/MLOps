@@ -28,6 +28,11 @@
 ### Tools
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/96987794/206476975-c5c98783-45bf-4b93-aae0-5efff71f6f88.png">
 
+Tracking 이란?
+머신러닝의 과정과 결과를 곳곳에서 기록한다는 의미로 "Tracking" 이라는 표현을 사용한다.
+Tracking은 실험(Experiment)의 각 실행(Run)에서 일어나고, 구체적으로는 다음 내용들을 기록한다. 
+코드 버전, 시작 및 종료 시간, 소스, 매개 변수, 메트릭, 아티팩트
+
 ### MLflow
 - Experiment Management & Tracking
   - 머신러닝 관련 실험을 정의하고 실험들을 관리하고, 실행하고 각 실험의 내용들을 기록할 수 있음. ex) code, result, data, configs
@@ -37,3 +42,17 @@
   - 모델이 어떤 프레임워크로 개발되었던 간에 통일된 형태로 배포해서 사용할 수 있도록 포맷화. ex) R ,pytorch, tensorflow 에 관련없이 동일하게 사용할수있도록 해줌
 - Model Registry (최근에 추가)
   - MLflow로 실험했던 모델을 저장하고 관리하는 저장소. Production stage, Staging stage 와 같이 표시할 수 있고, 간편하게 서빙할 수 있음. MLflow CLI를 통해 손쉽게 배포할 수 있고 Python API도 제공
+
+### MLflow 장점
+- pip로 쉽게 설치가능 하며 마이그레이션이 쉬움
+- 대시보드 UI 제공
+- 다양한 client api 제공 (python, Java, R 등)
+- 다양한 ml 프레임워크 지원 (scikit-learn, onnx, pytorch, keras, tensorflow 등)
+- 다양한 백엔드 스토리지 연동 지원 (mysql, sqlite, mariadb, oracle 등)
+- 다양한 artifact 스토리지 연동 지원 (Amazon S3, Google Cloud Storage, Azure Blob Storage 등)
+
+### MLflow Tracking Server
+- MLflow 는 Tracking 역할을 위한 별도의 서버를 제공한다. 이를 Tracking Server라고 부른다.
+- mlflow.log_params, mlflow.log_metrics 등을 통해서 ./mlruns 에 바로 기록물을 저장했다면, 이제는 이 백엔드 서버를 통해서 저장하게 된다.
+<img width="352" alt="image" src="https://user-images.githubusercontent.com/96987794/206486294-b3db9c42-69f2-4f43-9118-713eacd6343b.png">
+
