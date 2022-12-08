@@ -23,5 +23,7 @@
   - 모델 소스코드, Evaluation Metric 결과, 사용한 parameters, model.pkl 파일, 학습에 사용한 data, 데이터 전처리용 코드, 전처리된 data, 등등
   - 비슷한 작업의 반복, dependency 패키지들 버전관리, 사람 dependency, 테스트 어려움, reproduce되지않음, 모델 학습용 코드 개발자와 서빙용 코드 개발자가 분리되어있음
 
-모델 코드, Metric, hyper parameter, 모델 파일, 학습 데이터, 전처리 코드 등을 기록하며 관리함으로 인해 데이터과학자 및 머신러닝 연구자들은 생성, 구성, 실험, 추적, 배포 등의 머신러닝 life cycle을 보다 쉽게 관리할 수 있음
+- 모델 코드, Metric, hyper parameter, 모델 파일, 학습 데이터, 전처리 코드 등을 기록하며 관리함으로 인해 데이터과학자 및 머신러닝 연구자들은 생성, 구성, 실험, 추적, 배포 등의 머신러닝 life cycle을 보다 쉽게 관리할 수 있음
 
+### Tools
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/96987794/206476975-c5c98783-45bf-4b93-aae0-5efff71f6f88.png">
