@@ -26,4 +26,4 @@
 - 모델 코드, Metric, hyper parameter, 모델 파일, 학습 데이터, 전처리 코드 등을 기록하며 관리함으로 인해 데이터과학자 및 머신러닝 연구자들은 생성, 구성, 실험, 추적, 배포 등의 머신러닝 life cycle을 보다 쉽게 관리할 수 있음
 
 ### Tools
-<img width="900" alt="image" src="https://user-images.githubusercontent.com/96987794/206476975-c5c98783-45bf-4b93-aae0-5efff71f6f88.png">
+<img width="1200" alt="image" src="https://user-images.githubusercontent.com/96987794/206476975-c5c98783-45bf-4b93-aae0-5efff71f6f88.png">
