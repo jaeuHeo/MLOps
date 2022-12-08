@@ -55,5 +55,7 @@ Tracking은 실험(Experiment)의 각 실행(Run)에서 일어나고, 구체적�
 - MLflow 는 Tracking 역할을 위한 별도의 서버를 제공한다. 이를 Tracking Server라고 부른다.
 - mlflow.log_params, mlflow.log_metrics 등을 통해서 ./mlruns 에 바로 기록물을 저장했다면, 이제는 이 백엔드 서버를 통해서 저장하게 된다.
 - MLflow 시나리오
+
+
   <img width="352" alt="image" src="https://user-images.githubusercontent.com/96987794/206486294-b3db9c42-69f2-4f43-9118-713eacd6343b.png">
 
