@@ -27,3 +27,13 @@
 
 ### Tools
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/96987794/206476975-c5c98783-45bf-4b93-aae0-5efff71f6f88.png">
+
+### MLflow
+- Experiment Management & Tracking
+  - 머신러닝 관련 실험을 정의하고 실험들을 관리하고, 실행하고 각 실험의 내용들을 기록할 수 있음. ex) code, result, data, configs
+- Projects
+  - 모델의 의존성이 있는 모든 정보(데이터타입, 파라미터, 도커 정보, 파이토치 버전, 텐서플로우 버전 등)를 함께 넣어서 코드를 패키징
+- Models
+  - 모델이 어떤 프레임워크로 개발되었던 간에 통일된 형태로 배포해서 사용할 수 있도록 포맷화. ex) R ,pytorch, tensorflow 에 관련없이 동일하게 사용할수있도록 해줌
+- Model Registry (최근에 추가)
+  - MLflow로 실험했던 모델을 저장하고 관리하는 저장소. Production stage, Staging stage 와 같이 표시할 수 있고, 간편하게 서빙할 수 있음. MLflow CLI를 통해 손쉽게 배포할 수 있고 Python API도 제공
