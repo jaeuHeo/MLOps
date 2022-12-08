@@ -16,3 +16,10 @@
 - GIT과 유사한 인터페이스
 - 저장 방식
   - 데이터는 실제로 Object Storage에 저장되고 GIT server에 데이터의 메타데이터만 저장된다.
+
+# Model Management
+## 필요성
+- 머신러닝 Life Cycle 관리의 어려움
+  - 모델 소스코드, Evaluation Metric 결과, 사용한 parameters, model.pkl 파일, 학습에 사용한 data, 데이터 전처리용 코드, 전처리된 data, ....등등
+  - 비슷한 작업의 반복, dependency 패키지들 버전관리, 사람 dependency, 테스트 어려움, reproduce되지않음, 모델 학습용 코드 개발자와 서빙용 코드 개발자가 분리되어있음..
+
