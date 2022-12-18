@@ -59,3 +59,64 @@ Tracking은 실험(Experiment)의 각 실행(Run)에서 일어나고, 구체적�
 
   <img width="352" alt="image" src="https://user-images.githubusercontent.com/96987794/206486294-b3db9c42-69f2-4f43-9118-713eacd6343b.png">
 
+# Model Serving
+## ML Model의 서빙 단계에서 막히는 이유
+- 모델 개발과 소프트웨어 개발의 방법 괴리 
+- 모델 개발과정과 소프트웨어 개발 과정의 파편화
+- 모델 평가 방식 및 모니터링 구축의 어려움
+## 모델 서빙 고려사항
+### 형상관리
+- 모델 변경 이력
+- 모델 성능 정보 관리
+### 고가용성/확장성
+- 서비스 장애 대응(모델 성능 저하 데이터의 극적 변화)
+- 사용량에 따른 Scale in/out
+## 서빙 프레임워크
+- SELDON (Seldon Core), Tensorflow (TFServing), KFServing (KFServing), PyTorch (Torch Serve), BENTOML (BentoML)
+
+## 배포 전략
+### 무중단 배포 방식 : 서비스 중단 없이 새로운 버전을 계속 배포하는 방식
+- 롤링 방식
+  - 장점 : 손쉬운 롤백
+  - 단점 : 트래픽 과부하 / 호환성 문제
+- 블루-그린 방식
+  - 장점 : 롤백, 신버전 사전 테스트 등
+  - 단점 : 시스템 자원이 2배 이상 필요
+- 카나리 방식
+  - 장점 : 롤백, AB 테스트 가능(성능 모니터링)
+  - 단점 : 신버전, 구버전의 버전 관리 필요
+
+# Model Monitoring
+## MONITORING TESTS FOR ML
+- Dependency changes result in notification
+  - 발생 상황 : 버전 업그레이드 등으로 문제가 발생 가능
+  - 해결 방안 : 팀과의 공유(requirements 작성)
+- Data invariants hold in training and serving inputs 
+  - 발생 상황 : 훈련 데이터와 서빙 데이터의 차이로 문제 발생 가능
+  - 해결 방안 : 데이터 스키마 비교
+- Training and serving features compute the same values
+  - 발생 상황 : 새로운 피처를 모델에 추가할 때, 그 데이터가 훈련 모델의 데이터와 원천이 달라 문제 발생 가능
+  - 해결 방안 : 훈련 피처와 서빙에서 샘플링된 피처들의 통계적 수치가 매칭되는지 비교
+- Models are not too stale
+  - 발생 상황 : 오래 전에 훈련된 모델의 성능 저하
+  - 해결 방안 : 모델 훈련 파이프 라인의 수명 측정하여 관리
+- Models are numerically stable
+  - 발생 상황 : 명시적 에러 없이 발생할 수 있는 수치 오류
+  - 해결 방안 : nan, 무한대값 모니터링 등
+- The model has not experienced a dramatic or slow-leak regressions in training speed, serving latency, throughput, or RAM usage 
+  - 발생 상황 : 훈련 소요시간, 메모리 사용량 등으로 문제 발생
+  - 해결 방안 : 컴퓨팅 퍼포먼스 모니터링
+- The model has not experienced a regression in prediction quality on served data
+  - 발생 상황 : 검증 데이터가 실서비스 데이터보다 과거 데이터이기 때문에 발생
+  - 해결 방안 : 데이터를 분할하여 각각의 예측 결과에 대한 편향성을 측정하거나 예측이 이뤄짐과 거의 동시에 성능 평가 진행
+## Prometheus
+### 특징
+- 수집하는 Metric 데이터를 다차원의 시계열 데이터 형태로 저장
+- 데이터 분석을 위한 자체 언어 PromQL 지원
+- 시계열 데이터 저장에 적합한 TimeSeries DB 지원
+- 데이터 수집하는 방식이 Pull 방식
+- 모니터링 대상의 Agent 가 Server 로 Metric을 보내는 Push 방식이 아닌, Server 가 직접 정보를 가져가는 Pull 방식
+- Push 방식을 위한 Push Gateway 도 지원
+- 다양한 시각화 툴과의 연동 지원
+- 다양한 방식의 Alarming 지원
+
