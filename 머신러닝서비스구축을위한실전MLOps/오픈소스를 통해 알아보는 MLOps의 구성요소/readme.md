@@ -121,7 +121,7 @@ Tracking은 실험(Experiment)의 각 실행(Run)에서 일어나고, 구체적�
 - 다양한 방식의 Alarming 지원
 
 ### 구조
-<img width="1225" alt="image" src="https://user-images.githubusercontent.com/96987794/208430583-01650b7f-5661-472d-b0f9-a8b421f3dbf8.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/96987794/208430583-01650b7f-5661-472d-b0f9-a8b421f3dbf8.png">
 
 - Prometheus Server
     - 시계열 데이터를 수집하고 저장
