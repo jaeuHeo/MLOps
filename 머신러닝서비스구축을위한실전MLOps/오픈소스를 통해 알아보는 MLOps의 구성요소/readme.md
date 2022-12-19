@@ -120,3 +120,26 @@ Tracking은 실험(Experiment)의 각 실행(Run)에서 일어나고, 구체적�
 - 다양한 시각화 툴과의 연동 지원
 - 다양한 방식의 Alarming 지원
 
+### 구조
+![image](https://user-images.githubusercontent.com/96987794/208429951-34a2997b-17db-4ce7-a7c9-d39e90db75ca.png)
+- Prometheus Server
+    - 시계열 데이터를 수집하고 저장
+    - metrics 수집 주기를 설치 시 정할 수 있으며 default 는 15초
+- Service Discovery
+    - Monitoring 대상 리스트를 조회
+    - 사용자는 쿠버네티스에 등록하고, Prometheus Server 는 쿠버네티스 API Server 에게 모니터링 대상을 물어보는 형태
+- Exporter
+    - Prometheus 가 metrics 을 수집해갈 수 있도록 정해진 HTTP Endpoint 를 제공하여 정해진 형태로 metrics 를 Export
+    - Prometheus Server 가 이 Exporter 의 Endpoint 로 HTTP GET Request 를 보내 metrics 를 Pull 하여 저장한다.
+    - 하지만, 이런 pull 방식은 수집 주기와 네트워크 단절 등의 이유로 모든 Metrics 데이터를 수집하는 것을 보장할 수 없기 때문에 Push 방식을 위한 Pushgateway 제공
+- Pushgateway
+    - 보통 Prometheus Server 의 pull 주기(period) 보다 짧은 lifecycle 을 지닌 작업의 metrics 수집 보장을 위함
+- AlertManager
+  - PromQL 을 사용해 특정 조건문을 만들고, 해당 조건문이 만족되면 정해진 방식으로 정해진 메시지를 보낼 수 있음
+  - ex) service A 가 5분간 응답이 없으면, 관리자에게 slack DM 과 e-mail 을 보낸다.
+- Grafana
+    - Prometheus 와 항상 함께 연동되는 시각화 툴
+    - Prometheus 자체 UI 도 있고, API 제공을 하기에 직접 시각화 대시보드를 구성할 수도 있음
+- PromQL
+    - Prometheus 가 저장한 데이터 중 원하는 정보만 가져오기 위한 Query Language 제공
+    - Time Series Data 이며, Multi-Dimensional Data 이기 때문에 처음 보면 다소 복잡할 수 있으나 Prometheus 및 Grafana 를 잘 사용하기 위해서는 어느 정도 익혀두어야 함
