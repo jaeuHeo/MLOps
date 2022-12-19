@@ -121,7 +121,8 @@ Tracking은 실험(Experiment)의 각 실행(Run)에서 일어나고, 구체적�
 - 다양한 방식의 Alarming 지원
 
 ### 구조
-![image](https://user-images.githubusercontent.com/96987794/208429951-34a2997b-17db-4ce7-a7c9-d39e90db75ca.png)
+<img width="1225" alt="image" src="https://user-images.githubusercontent.com/96987794/208430583-01650b7f-5661-472d-b0f9-a8b421f3dbf8.png">
+
 - Prometheus Server
     - 시계열 데이터를 수집하고 저장
     - metrics 수집 주기를 설치 시 정할 수 있으며 default 는 15초
