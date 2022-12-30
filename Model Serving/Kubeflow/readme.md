@@ -10,8 +10,11 @@ minikube start --driver=docker   --kubernetes-version=v1.21.7   --extra-config=a
 - cpu, ram, disk 사이즈는 각자 컴퓨팅 환경에 맞게 구성하면 된다.
 
 https://github.com/kubeflow/manifests 의 readme의 커스터마이즈 build 순서대로 진행해도 되지만 나는 
+
 while ! kustomize build example | kubectl apply -f -; do echo "Retrying to apply resources"; sleep 10; done
+
 의 반복문을 통해서 manifests 하위 폴더인 example의 kustomization.yaml을 읽어서 모두 설치하는 방식으로 진행했다.
+
 만약, 모든 컴포넌트 설치를 원치않다면 하나하나 설치하는 것을 추천한다.
 
 모두 빌드 됐다면,
